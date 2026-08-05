@@ -41,6 +41,10 @@ http:
       loadBalancer:
         servers:
           - url: http://geocode:8001
+    events:
+      loadBalancer:
+        servers:
+          - url: http://events:3000
 
   routers:
     dashboard:
@@ -79,3 +83,6 @@ http:
       service: geocode
       middlewares:
         - strip-api-prefix
+    events:
+      rule: PathPrefix("/api/events")
+      service: events
